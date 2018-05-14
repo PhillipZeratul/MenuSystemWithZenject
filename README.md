@@ -52,3 +52,4 @@ Some use tips:
 3. ```OnMenuEnabled``` Action in MenuManager.cs is called when Menu is enabled, you can override ```OnEnable()``` method to do some notification stuff.
 4. You can override ```OpenAnimation()``` and ```CloseAnimation()``` to add animation when Menu is opened or closed.
 5. ```public void GoToMenu(Menu instance, bool shouldCloseAlwaysOnTopMenu = false)``` will let you jump to ```Menu instance```, close all the menus in between.
+6. ```AlwaysKeepOnTop``` is a tag that will make the Menu on top of all the Menus without it, ```OnBackPressed()``` on other Menus will not close Menus with ```AlwaysKeepOnTop``` set to true, you can close it specifically call this Menu's ```OnBackPressed()```. Good to use for overlay menus.
