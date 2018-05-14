@@ -19,7 +19,7 @@ Assets -> Create -> Zenject -> Project Context
 2. Add GlobalInstaller.cs to Project Context's Installer list. \
 GlobalInstaller.cs is where the global binding of Zenject happens.
 
-3. Create a new script that derives from Menu<> i.e.
+3. Create a new script that derives from Menu<> i.e. StartMenu.cs
 ```C#
 using Zenject;
 using MenuSystemWithZenject;
