@@ -11,8 +11,8 @@ https://github.com/modesttree/Zenject
 I started this because my project is written with Zenject and I want the MenuSystem to work with Zenject as well. \
 So inspired by the idea of MenuSystem, I did some modification to it and I think the result is quite pleasing.
 
-How to use: \
-1. You need to create a Zenject Project Context in Resource folder, all the menus will be a child in the hierarchy of this Project Context in runtime. 
+How to use:
+1. You need to create a Zenject Project Context in Resource folder, all the menus will be a child in the hierarchy of this Project Context at runtime. 
 ```
 Assets -> Create -> Zenject -> Project Context
 ```
@@ -46,3 +46,9 @@ The above code declares a StartMenu and open the GameMenu when start button is c
 
 5. And you are good to go.
 
+Some use tips:
+1. You need to use the ```Factory.Create()``` to find the instance of the menu so it get injected by Zenject when created.
+2. All the menus inhereit from Menu has OnBackPress() method that will destroy/disable it self when called based on the setting of this menu.
+3. ```OnMenuEnabled``` Action in MenuManager.cs is called when Menu is enabled, you can override ```OnEnable()``` method to do some notification stuff.
+4. You can override ```OpenAnimation()``` and ```CloseAnimation()``` to add animation when Menu is opened or closed.
+5. ```public void GoToMenu(Menu instance, bool shouldCloseAlwaysOnTopMenu = false)``` will let you jump to ```Menu instance```, close all the menus in between.
