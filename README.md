@@ -5,15 +5,16 @@ This is a Unity Menu Framework inspired by \
 https://github.com/YousicianGit/UnityMenuSystem \
 Check their talk at Unity Europe 2017 at \
 https://www.youtube.com/watch?v=wbmjturGbAQ \
-and **Zenject** \
+and **Zenject**, a Dependency Injection Framework for Unity\
 https://github.com/modesttree/Zenject
 
-Zenject is a Dependency Injection Framework for Unity.\
 I started this because my project is written with Zenject and I want the MenuSystem to work with Zenject as well. \
+
 So inspired by the idea of MenuSystem, I did some modification to it and I think the result is quite pleasing.
 
 ## Introduction
 As inspired by MenuSystem, all the menus are stored as canvas prefabs and once you assign them to GlobalInstaller component on the ProjectContext prefab, they will be injected by Zenject automatically on game start so you can access them anywhere in the code by just calling ```[Inject]```. See more about the convenience of Dependency Injection in their Documents.\
+
 At runtime, all the instance of menus are under ProjectContext hierarchy in DontDestroyOnLoad, so they are persistent.
 
 ## How to use:
