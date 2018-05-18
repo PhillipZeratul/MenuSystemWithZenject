@@ -52,7 +52,7 @@ public class StartMenu : Menu<StartMenu>
 ```
 The above code declares a StartMenu and open the GameMenu when start button is clicked. And don't forget to create the GameMenu as well, it should derive from ```Menu<GameMenu>```, and you can write your own function behaviours.
 
-6. All the menus are individual canvases and need to be a prefab, add all the prefabs to GlobalInstaller on the Project Context.
+6. All the menus are individual canvases and need to be a prefab, add all the prefabs to GlobalInstaller to the Project Context prefab.
 
 7. And you are good to go.
 
