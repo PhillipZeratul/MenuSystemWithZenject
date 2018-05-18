@@ -29,7 +29,7 @@ GlobalInstaller.cs is where the global binding of Zenject happens.
 
 4. You need a persistant scene that has a Zenject SceneContext (for Zenject to work) and a EventSystem (for listening UI events) in it.
 
-5. Create a new script that derives from Menu<> i.e. StartMenu.cs
+5. Create a new script that derives from ```Menu<>``` i.e. StartMenu.cs
 ```C#
 using Zenject;
 using MenuSystemWithZenject;
@@ -50,7 +50,7 @@ public class StartMenu : Menu<StartMenu>
     }
 }
 ```
-The above code declares a StartMenu and open the GameMenu when start button is clicked. And don't forget to create the GameMenu as well, it should derive from Menu<GameMenu>, and you can write your own function behaviours.
+The above code declares a StartMenu and open the GameMenu when start button is clicked. And don't forget to create the GameMenu as well, it should derive from ```Menu<GameMenu>```, and you can write your own function behaviours.
 
 6. All the menus are individual canvases and need to be a prefab, add all the prefabs to GlobalInstaller on the Project Context.
 
