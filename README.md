@@ -13,9 +13,8 @@ I started this because my project is written with Zenject and I want the MenuSys
 So inspired by the idea of MenuSystem, I did some modification to it and I think the result is quite pleasing.
 
 ## Introduction
-As inspired by MenuSystem, all the menus are stored as canvas prefabs and once you assign them to GlobalInstaller component on the ProjectContext prefab, they will be injected by Zenject so you can access them anywhere by just calling ```[Inject]```.\
+As inspired by MenuSystem, all the menus are stored as canvas prefabs and once you assign them to GlobalInstaller component on the ProjectContext prefab, they will be injected by Zenject automatically on game start so you can access them anywhere in the code by just calling ```[Inject]```. See more about the convenience of Dependency Injection in their Documents.\
 At runtime, all the instance of menus are under ProjectContext hierarchy in DontDestroyOnLoad, so they are persistent.
-
 
 ## How to use:
 1. You need Zenject for this to work. You can download it here: https://github.com/modesttree/Zenject and import it into your project.
