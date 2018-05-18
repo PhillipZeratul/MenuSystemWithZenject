@@ -8,20 +8,28 @@ https://www.youtube.com/watch?v=wbmjturGbAQ \
 and **Zenject** \
 https://github.com/modesttree/Zenject
 
+Zenject is a Dependency Injection Framework for Unity.\
 I started this because my project is written with Zenject and I want the MenuSystem to work with Zenject as well. \
 So inspired by the idea of MenuSystem, I did some modification to it and I think the result is quite pleasing.
 
-How to use:
-1. You need to create a Zenject Project Context in Resource folder, all the menus will be a child in the hierarchy of this Project Context at runtime. 
+## Introduction
+As inspired by MenuSystem, all the menus are stored as canvas prefabs and once you assign them to GlobalInstaller component on the ProjectContext prefab, they will be injected by Zenject so you can access them anywhere by just calling ```[Inject]```.\
+At runtime, all the instance of menus are under ProjectContext hierarchy in DontDestroyOnLoad, so they are persistent.
+
+
+## How to use:
+1. You need Zenject for this to work. You can download it here: https://github.com/modesttree/Zenject and import it into your project.
+
+2. You need to create a Zenject Project Context in Resource folder, all the menus will be a child in the hierarchy of this Project Context at runtime. 
 ```
 Assets -> Create -> Zenject -> Project Context
 ```
-2. Add GlobalInstaller.cs to Project Context's Installer list. \
+3. Add GlobalInstaller.cs to Project Context's Installer list. \
 GlobalInstaller.cs is where the global binding of Zenject happens.
 
-3. You need a persistant scene that has a Zenject SceneContext (for Zenject to work) and a EventSystem (for listening UI events) in it.
+4. You need a persistant scene that has a Zenject SceneContext (for Zenject to work) and a EventSystem (for listening UI events) in it.
 
-4. Create a new script that derives from Menu<> i.e. StartMenu.cs
+5. Create a new script that derives from Menu<> i.e. StartMenu.cs
 ```C#
 using Zenject;
 using MenuSystemWithZenject;
@@ -44,19 +52,19 @@ public class StartMenu : Menu<StartMenu>
 ```
 The above code declares a StartMenu and open the GameMenu when start button is clicked.
 
-5. All the menus are individual canvases and need to be a prefab, add all the prefabs to GlobalInstaller on the Project Context.
+6. All the menus are individual canvases and need to be a prefab, add all the prefabs to GlobalInstaller on the Project Context.
 
-6. And you are good to go.
+7. And you are good to go.
 
-Some use tips:
-1. You need to use the ```Factory.Create()``` to find the instance of the menu so it get injected by Zenject when created.
+## Some use tips:
+1. You need to use the ```Menu.Factory.Create()``` to find the instance of the menu so it get injected by Zenject when created.
 
-2. All the menus inhereit from Menu has OnBackPress() method that will destroy/disable it self when called based on the setting of this menu.
+2. All the menus inhereit from Menu has ```OnBackPress()``` method that will destroy/disable it self when called based on the setting of this menu.
 
 3. ```OnMenuEnabled``` Action in MenuManager.cs is called when Menu is enabled, you can override ```OnEnable()``` method to do some notification stuff.
 
 4. You can override ```OpenAnimation()``` and ```CloseAnimation()``` to add animation when Menu is opened or closed.
 
-5. ```public void GoToMenu(Menu instance, bool shouldCloseAlwaysOnTopMenu = false)``` will let you jump to ```Menu instance```, close all the menus in between.
+5. ```public void GoToMenu(Menu instance, bool shouldCloseAlwaysOnTopMenu = false)``` will let you jump to ```Menu instance```, closing all the menus in between.
 
 6. ```AlwaysKeepOnTop``` is a tag that will make the Menu on top of all the Menus without it, ```OnBackPressed()``` on other Menus will not close Menus with ```AlwaysKeepOnTop``` set to true, you can close it specifically call this Menu's ```OnBackPressed()```. Good to use for overlay menus.
